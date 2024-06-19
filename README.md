@@ -146,7 +146,7 @@ Antarmuka pengguna grafis (GUI) dibangun menggunakan Tkinter. Ini memungkinkan p
 
 3. **Jalankan Program**:
     ```bash
-    python fa_sentence_recognizer.py.py
+    python main.py
     ```
 
 4. **Gunakan Aplikasi**:
