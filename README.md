@@ -82,3 +82,90 @@ Here are some example sentences you can try:
 - Ariyuga Rizky Wahyudi (1301223440)
 
 Feel free to contribute to this project by submitting issues or pull requests. We welcome any suggestions or improvements.
+
+---
+
+# Pemeriksa Struktur Kalimat Bahasa Indonesia
+
+Proyek ini adalah aplikasi berbasis Python yang menggunakan Automata Hingga (FA) untuk mengenali dan menganalisis struktur kalimat dalam bahasa Indonesia. Program ini mengidentifikasi berbagai komponen kalimat, memeriksa validitas struktur, dan menentukan apakah kalimat tersebut logis. Aplikasi ini dibangun dengan Tkinter untuk antarmuka pengguna grafis (GUI).
+
+## Struktur Proyek
+
+### Kelas TokenRecognizerFA
+
+Kelas `TokenRecognizerFA` bertanggung jawab untuk membangun dan mengelola Automata Hingga. Kelas ini mengenali berbagai bagian dari kalimat, seperti subjek, predikat, objek, dan keterangan.
+
+- **Atribut**:
+  - `states`: Kamus yang mewakili keadaan dari FA.
+  - `final_states`: Kamus yang menyimpan keadaan akhir untuk setiap kategori token (S, P, O, K).
+
+- **Metode**:
+  - `__init__()`: Menginisialisasi FA dan membangunnya dengan kata-kata yang telah ditentukan.
+  - `build_fa()`: Mendefinisikan kata-kata untuk subjek, predikat, objek, dan keterangan dan menambahkannya ke FA.
+  - `add_word_to_fa(word, category)`: Menambahkan kata ke FA di bawah kategori yang ditentukan.
+  - `recognize_token(token)`: Mengenali token dan mengembalikan kategorinya.
+  - `recognize_sequence(words)`: Mengenali urutan kata dan mengembalikan daftar token yang dikategorikan.
+
+### Kelas Parser
+
+Kelas `Parser` menggunakan `TokenRecognizerFA` untuk menganalisis kalimat dan memeriksa validitas serta struktur logisnya.
+
+- **Atribut**:
+  - `token_recognizer`: Sebuah instance dari `TokenRecognizerFA`.
+  - `stack`: Daftar untuk menyimpan struktur dari token yang dikenali.
+  - `tokens`: Daftar untuk menyimpan token yang sebenarnya.
+
+- **Metode**:
+  - `__init__(token_recognizer)`: Menginisialisasi parser dengan pengenal token.
+  - `parse(sentence)`: Menganalisis kalimat yang diberikan, memeriksa strukturnya, dan menentukan apakah kalimat tersebut logis.
+  - `is_valid_structure()`: Memeriksa apakah token yang dikenali membentuk struktur kalimat yang valid.
+  - `is_logical_sentence()`: Memeriksa apakah token yang dikenali membentuk kalimat yang logis.
+
+### GUI
+
+Antarmuka pengguna grafis (GUI) dibangun menggunakan Tkinter. Ini memungkinkan pengguna untuk memasukkan kalimat dan memeriksa struktur serta logikanya.
+
+- **Fungsi**:
+  - `check_sentence()`: Mengambil kalimat dari entri, menganalisisnya, dan menampilkan hasilnya.
+  - `show_landing_page()`: Menampilkan halaman pembuka dengan detail proyek.
+  - `main_page_pack()`: Mengatur komponen halaman utama.
+
+## Instruksi Menjalankan Program
+
+1. **Kloning Repository**:
+    ```bash
+    git clone https://github.com/yourusername/indonesian-sentence-structure-checker.git
+    cd indonesian-sentence-structure-checker
+    ```
+
+2. **Instalasi Perpustakaan yang Diperlukan**:
+    Pastikan Anda telah menginstal Tkinter. Tkinter biasanya sudah termasuk dalam Python, tetapi Anda dapat menginstalnya menggunakan:
+    ```bash
+    sudo apt-get install python3-tk
+    ```
+
+3. **Jalankan Program**:
+    ```bash
+    python main.py
+    ```
+
+4. **Gunakan Aplikasi**:
+    - Aplikasi akan membuka jendela GUI.
+    - Halaman pembuka menyediakan informasi proyek dan tombol untuk memulai.
+    - Masukkan kalimat di bidang input dan klik "Periksa" untuk memeriksa struktur dan logika kalimat.
+    - Hasilnya akan ditampilkan di kotak pesan.
+
+## Contoh Kalimat
+
+Berikut adalah beberapa contoh kalimat yang dapat Anda coba:
+- "saya makan nasi"
+- "kamu minum air di rumah"
+- "dia bermain bola di lapangan"
+
+## Kontributor
+
+- Nathan Dava Arkananta (1301223297)
+- Umar Khairur Rahman (1301223410)
+- Ariyuga Rizky Wahyudi (1301223440)
+
+Silakan berkontribusi pada proyek ini dengan mengajukan masalah atau permintaan penarikan. Kami menerima saran atau perbaikan apa pun.
